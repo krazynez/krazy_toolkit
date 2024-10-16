@@ -12,6 +12,8 @@ PSP_EBOOT_ICON = ../res/ICON0.PNG
 
 PSP_EBOOT_PIC1 = ../res/PIC1.PNG
 
+PSP_EBOOT_SND0 = ../res/SND0.at3
+
 INCDIR += ./inc
 INCDIR += ../data/PRXs
 

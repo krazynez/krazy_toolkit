@@ -13,7 +13,7 @@
 #include "inc/kubridge.h"
 #define vlf_text_items 20
 
-PSP_MODULE_INFO("Krazy Toolkit", 0, 1, 0);
+PSP_MODULE_INFO("Krazy Toolkit", 0, 1, 1);
 PSP_MAIN_THREAD_ATTR(0);
 
 VlfText vlf_texts[vlf_text_items];
@@ -447,16 +447,17 @@ void OnMainMenuSelect(int sel) {
 						memset(big_buf, 0, sizeof(big_buf));
 						char outname[128];
 						char filetodump[] = "UMDRescue/GAME150/%__SCE__UMDRescue/EBOOT.PBP";
-						char mkdir_file[] = "ms0:/PSP/GAME/%__SCE__UMDRescue";
+						char mkdir_file[] = "ms0:/PSP/GAME150/%__SCE__UMDRescue";
 						sceIoMkdir(mkdir_file, 0777);
-						sprintf(outname, "ms0:/PSP/GAME/%%__SCE__UMDRescue/EBOOT.PBP");
+						sprintf(outname, "ms0:/PSP/GAME150/%%__SCE__UMDRescue/EBOOT.PBP");
 						strcat(mkdir_file, "/EBOOT.PBP");
 						zipFileExtract(path, EBOOT_PSAR, filetodump, mkdir_file);
 
 						// Part 2
 						char outname2[64];
 						char filetodump2[] ="UMDRescue/GAME150/__SCE__UMDRescue/EBOOT.PBP";
-						snprintf(outname2, 41,"ms0:/PSP/GAME/__SCE__UMDRescue/EBOOT.PBP");
+						sceIoMkdir("ms0:/PSP/GAME150/__SCE__UMDRescue", 0777);
+						sprintf(outname2,"ms0:/PSP/GAME150/__SCE__UMDRescue/EBOOT.PBP");
 						zipFileExtract(path, EBOOT_PSAR, filetodump2, outname2);
 
 						ErrorReturn("%s successfully installed.", mode);
